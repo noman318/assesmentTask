@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>View Products</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,8 +13,21 @@
     />
   </head>
   <body>
-    <%- include ('./partials/header')%>
-    <h3>My Products</h3>
+    <%- include('./partials/header')%>
+    <div class="container">
+      <% for(let p of products) {%>
+      <br />
+      <div class="card" style="width: 18rem">
+        <img src="<%= p.photo %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%= p.name %></h5>
+          <p class="card-text"><%= p.description %></p>
+          <p class="card-text"><%= p.quantity %></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

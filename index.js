@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const port = 2000;
 const app = express();
+const { getAllProducts, createProduct } = require("./controllers/prodCon");
 const productRoute = require("./app");
 
 app.use(express.json());
@@ -28,9 +29,12 @@ const connectToDb = mongoose.connect(
 );
 
 app.get("/", (req, res) => {
-  res.send("Root api is Running");
+  res.render("index");
 });
-
+app.get("/createProd", (req, res) => {
+  res.render("addProduct");
+});
+app.get("/getProd", getAllProducts);
 app.listen(port, (err) => {
   if (err) {
     console.log(err);

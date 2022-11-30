@@ -7,7 +7,7 @@ const createProduct = async (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.send("Product is added");
+      res.render("viewProducts");
     }
   });
 };
@@ -16,7 +16,9 @@ const getAllProducts = async (req, res) => {
     if (err) {
       res.send("SomeThing went wrong");
     } else {
-      res.send(data);
+      res.render("viewProducts", {
+        products: data,
+      });
     }
   });
 };
