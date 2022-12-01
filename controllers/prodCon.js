@@ -2,23 +2,24 @@ const ProductModel = require("../model/product");
 
 const createProduct = async (req, res) => {
   const productData = req.body;
+  // console.log(productData);
   let insert = new ProductModel(productData);
   insert.save((err) => {
     if (err) {
       res.send(err);
     } else {
-      res.render("viewProducts");
+      res.render("index", {
+        products: "",
+      });
     }
   });
 };
-const getAllProducts = async (req, res) => {
+const getAllProducts = (req, res) => {
   ProductModel.find({}, (err, data) => {
     if (err) {
       res.send("SomeThing went wrong");
     } else {
-      res.render("viewProducts", {
-        products: data,
-      });
+      res.render("index", { products: data });
     }
   });
 };
@@ -42,7 +43,7 @@ const updateProductById = async (req, res) => {
     if (err) {
       console.log("Error", +err);
     } else {
-      res.send("Product Updated");
+      res.render("index");
     }
   });
 };
@@ -54,7 +55,7 @@ const deleteProductsByid = async (req, res) => {
   if (!productDel) {
     res.status(404).send("Not Found");
   } else {
-    res.send(productDel);
+    res.render("index");
   }
 };
 
