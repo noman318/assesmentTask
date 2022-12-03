@@ -12,10 +12,11 @@
       crossorigin="anonymous"
     />
   </head>
-  <%- include('./partials/header.ejs')%>
   <body>
-    <form class="container">
-      <h3>Update Product</h3>
+    <%- include('./partials/header.ejs')%>
+    <form class="container" method="post" action="/updateProducts" >
+      <br>
+      <h3 class="text-center">Update Players</h3>
       <div class="form-group">
         <br />
         <label for="photo"><h4>Photo</h4></label>
@@ -58,6 +59,7 @@
           class="form-control"
           id="quantity"
           aria-describedby="quantity"
+          name="quantity"
         />
       </div>
       <br />
@@ -71,7 +73,7 @@
         />
       </div>
       <br />
-      <button type="submit" class="btn btn-primary">Add Products</button>
+      <button type="submit" class="btn btn-primary">Update Players</button>
     </form>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

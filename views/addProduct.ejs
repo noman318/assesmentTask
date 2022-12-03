@@ -12,10 +12,11 @@
       crossorigin="anonymous"
     />
   </head>
-  <%- include('./partials/header.ejs')%>
   <body>
+    <%- include('./partials/header.ejs')%>
+    <br>
     <form class="container" method="post" action="/createProd">
-      <h4>Add Products</h4>
+      <h3 class="text-center">Add Players</h3>
       <div class="form-group">
         <br />
         <label for="photo"><h4>Photo</h4></label>
@@ -25,6 +26,7 @@
           id="photo"
           aria-describedby="photo"
           name="photo"
+          required
         />
       </div>
       <br />
@@ -36,6 +38,7 @@
           id="name"
           aria-describedby="text"
           name="name"
+          required
         />
       </div>
       <br />
@@ -47,6 +50,7 @@
           id="price"
           aria-describedby="price"
           name="price"
+          required
         />
       </div>
       <br />
@@ -58,6 +62,8 @@
           class="form-control"
           id="quantity"
           aria-describedby="quantity"
+          name="quantity"
+          required
         />
       </div>
       <br />

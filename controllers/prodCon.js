@@ -1,14 +1,14 @@
 const ProductModel = require("../model/product");
 
 const createProduct = async (req, res) => {
-  const productData = req.body;
-  // console.log(productData);
-  let insert = new ProductModel(productData);
+  const productsData = req.body;
+  // console.log(productsData);
+  let insert = new ProductModel(productsData);
   insert.save((err) => {
     if (err) {
       res.send(err);
     } else {
-      res.render("index", {
+      res.redirect("/getProd",201, {
         products: "",
       });
     }
@@ -19,7 +19,7 @@ const getAllProducts = (req, res) => {
     if (err) {
       res.send("SomeThing went wrong");
     } else {
-      res.render("index", { products: data });
+      res.render("viewProducts", { products: data });
     }
   });
 };
@@ -43,7 +43,7 @@ const updateProductById = async (req, res) => {
     if (err) {
       console.log("Error", +err);
     } else {
-      res.render("index");
+      res.redirect("/getProd",200,{ products: "" });
     }
   });
 };
@@ -51,11 +51,12 @@ const updateProductById = async (req, res) => {
 const deleteProductsByid = async (req, res) => {
   let pid = req.params.id;
   let productDel = await ProductModel.findByIdAndDelete(pid);
+  // console.log(pid)
   // console.log(productDel);
   if (!productDel) {
     res.status(404).send("Not Found");
   } else {
-    res.render("index");
+    res.redirect("/getProd");
   }
 };
 

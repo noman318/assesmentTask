@@ -43,9 +43,14 @@ app.post("/", (req, res) => {
 app.get("/createProd", (req, res) => {
   res.render("addProduct");
 });
+app.get("/updateProducts", (req, res) => {
+  res.render("updateProduct", { products: "" });
+});
+
+app.get('/getProd',getAllProducts)
 app.post("/createProd", createProduct);
-app.post("/updateProducts/:id", updateProductById);
-app.get("/deleteProducts/:id", deleteProductsByid);
+app.post("/updateProducts", updateProductById);
+app.get(`/deleteProducts/:id`, deleteProductsByid);
 app.listen(port, (err) => {
   if (err) {
     console.log(err);
