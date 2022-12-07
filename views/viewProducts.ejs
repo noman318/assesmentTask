@@ -26,7 +26,7 @@
           <p class="card-text"><%= p.price %></p>
           <p class="card-text"><%= p.quantity %></p>
           <p class="card-text"><%= p.description %></p>
-          <a href="/updateProducts" class="btn btn-primary m-2">EDIT</a>
+          <a href="/updateProducts/<%= p._id%>" class="btn btn-primary m-2">EDIT</a>
           <a href="/deleteProducts/<%= p._id%>" class="btn btn-danger m-2">DELETE</a>
         </div>
       </div>
