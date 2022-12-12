@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const prodMod = require("./model/product");
 const port = 2000;
 const app = express();
 const {
@@ -43,13 +44,19 @@ app.post("/", (req, res) => {
 app.get("/createProd", (req, res) => {
   res.render("addProduct");
 });
-app.get("/updateProducts/:id", (req, res) => {
-  res.render("updateProduct", { products: "" });
+app.get("/updateProducts/:id", (req, res, err) => {
+  let id = req.params.id;
+  prodMod
+    .findById({ _id: id })
+    .then((data) => {
+      res.render("updateProduct", { products: data });
+    })
+    .catch(err);
 });
 
-app.get('/getProd',getAllProducts)
+app.get("/getProd", getAllProducts);
 app.post("/createProd", createProduct);
-app.post("/updateProducts/:id", updateProductById);
+app.post("/updateProducts1/:id", updateProductById);
 app.get(`/deleteProducts/:id`, deleteProductsByid);
 app.listen(port, (err) => {
   if (err) {

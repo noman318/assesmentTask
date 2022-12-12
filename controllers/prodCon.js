@@ -8,7 +8,7 @@ const createProduct = async (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.redirect("/getProd",201, {
+      res.redirect("/getProd", 201, {
         products: "",
       });
     }
@@ -43,7 +43,7 @@ const updateProductById = async (req, res) => {
     if (err) {
       console.log("Error", +err);
     } else {
-      res.redirect("/getProd",200,{ products: "" });
+      res.redirect("/getProd", 200, { products: "" });
     }
   });
 };

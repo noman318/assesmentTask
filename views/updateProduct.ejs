@@ -14,8 +14,12 @@
   </head>
   <body>
     <%- include('./partials/header.ejs')%>
-    <form class="container" method="post" action="/updateProducts" >
-      <br>
+    <form
+      class="container"
+      method="post"
+      action="/updateProducts1/<%= products._id %>"
+    >
+      <br />
       <h3 class="text-center">Update Players</h3>
       <div class="form-group">
         <br />
@@ -26,6 +30,7 @@
           id="photo"
           aria-describedby="photo"
           name="photo"
+          value="<%= products.photo %>"
         />
       </div>
       <br />
@@ -37,6 +42,7 @@
           id="name"
           aria-describedby="text"
           name="name"
+          value="<%= products.name %>"
         />
       </div>
       <br />
@@ -48,6 +54,7 @@
           id="price"
           aria-describedby="price"
           name="price"
+          value="<%= products.price %>"
         />
       </div>
       <br />
@@ -60,6 +67,7 @@
           id="quantity"
           aria-describedby="quantity"
           name="quantity"
+          value="<%= products.quantity %>"
         />
       </div>
       <br />
@@ -70,6 +78,7 @@
           class="form-control"
           id="textdesc"
           name="description"
+          value="<%= products.description %>"
         />
       </div>
       <br />
